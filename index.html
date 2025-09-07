@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Critical Reflection - Decoloniality</title>
+    <title>Decolonising Education in Africa - Critical Analysis</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -206,6 +206,38 @@
             line-height: 1.7;
             color: var(--light);
         }
+        /* Article Link Box */
+        .article-link-box {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid var(--royal-blue);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .article-link-box:hover {
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.6);
+            transform: translateY(-3px);
+        }
+        .article-link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--royal-blue);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .article-link-button:hover {
+            background: var(--royal-blue-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
         /* Question Card */
         .question-card {
             background: rgba(30, 30, 40, 0.8);
@@ -358,35 +390,36 @@
         </a>
     </div>
     <div class="top-header">
-        <h1>Critical Reflection: Decoloniality</h1>
+        <h1>Critical Analysis: Decolonising Education in Africa</h1>
     </div>
     <div class="main-container">
         <div class="full-width-card">
-            <h2><i class="fas fa-comments"></i> Reflective Questions</h2>
-            <p>Take some time to reflect on the concept of decoloniality and its broader implications. Answer the following questions thoughtfully:</p>
+            <h2><i class="fas fa-book-open"></i> Article Analysis</h2>
+            <p>Read the article "Decolonising Education in Africa: What does it mean" by Sabelo J. Ndlovu-Gatsheni and answer the following questions to analyze the author's argumentative strategies:</p>
             
-            <div class="question-card">
-                <h3 class="question-title"><i class="fas fa-lightbulb"></i> Question 1: Learning About Decoloniality</h3>
-                <p>What did you learn about decoloniality today? How has your understanding of this concept evolved through reading the article and engaging with the material?</p>
-                <textarea class="textarea" id="question1" placeholder="Write your reflection here..."></textarea>
+            <div class="article-link-box">
+                <a href="https://www.ufs.ac.za/docs/librariesprovider43/international-affairs/decolonising-african-education.fv.pdf" class="article-link-button" target="_blank">
+                    <i class="fas fa-file-pdf"></i>
+                    Read "Decolonising Education in Africa" (PDF)
+                </a>
             </div>
             
             <div class="question-card">
-                <h3 class="question-title"><i class="fas fa-globe-africa"></i> Question 2: Examples of Coloniality</h3>
-                <p>Can you think of examples of coloniality that are not necessarily between Africa and the Global North? What about within Africa or other contexts? How do these examples help you understand the broader applicability of decolonial thinking?</p>
-                <textarea class="textarea" id="question2" placeholder="Write your reflection here..."></textarea>
+                <h3 class="question-title"><i class="fas fa-bullseye"></i> Question 1: Argumentative Strategy</h3>
+                <p>Identify and explain one key argumentative strategy the author uses to develop his main argument about decoloniality. How does this strategy (e.g., use of definitions, examples, counterarguments) help the author persuade the reader?</p>
+                <textarea class="textarea" id="question1" placeholder="Write your analysis here..."></textarea>
             </div>
             
             <div class="question-card">
-                <h3 class="question-title"><i class="fas fa-exchange-alt"></i> Question 3: Migration vs Decoloniality</h3>
-                <p>What is the difference between migration and decoloniality? How might these concepts intersect or diverge in practice, especially in postcolonial contexts?</p>
-                <textarea class="textarea" id="question3" placeholder="Write your reflection here..."></textarea>
+                <h3 class="question-title"><i class="fas fa-user-check"></i> Question 2: Author's Stance</h3>
+                <p>What is the author's overall stance on the concept of decoloniality, particularly in relation to the Stellenbosch University incident? How does he position himself in relation to more "radical" interpretations of decolonization, and what evidence does he provide to support his position?</p>
+                <textarea class="textarea" id="question2" placeholder="Write your analysis here..."></textarea>
             </div>
             
             <div class="question-card">
-                <h3 class="question-title"><i class="fas fa-graduation-cap"></i> Question 4: Decoloniality and Your Discipline</h3>
-                <p>What is the relationship between decoloniality and interpreting one of your discipline's assignments? How might a decolonial lens change how you approach academic work in your field?</p>
-                <textarea class="textarea" id="question4" placeholder="Write your reflection here..."></textarea>
+                <h3 class="question-title"><i class="fas fa-search"></i> Question 3: Evidence and Examples</h3>
+                <p>Analyze how the author uses evidence and examples (such as the Stellenbosch incident, references to Fanon, or comparisons to Zimbabwe) to support his claims about what decolonization in African education should entail. Which pieces of evidence are most effective and why?</p>
+                <textarea class="textarea" id="question3" placeholder="Write your analysis here..."></textarea>
             </div>
             
             <div class="action-buttons">
@@ -411,8 +444,7 @@
             const responses = {
                 question1: document.getElementById('question1').value || "(No response)",
                 question2: document.getElementById('question2').value || "(No response)",
-                question3: document.getElementById('question3').value || "(No response)",
-                question4: document.getElementById('question4').value || "(No response)"
+                question3: document.getElementById('question3').value || "(No response)"
             };
             return responses;
         }
@@ -420,17 +452,15 @@
         function formatTextContent() {
             const responses = collectResponses();
             const date = new Date().toLocaleDateString();
-            let content = "Critical Reflection: Decoloniality\n";
+            let content = "Critical Analysis: Decolonising Education in Africa\n";
             content += "===============================================\n\n";
             content += `Date: ${date}\n\n`;
-            content += "Question 1: What did you learn about decoloniality today?\n";
+            content += "Question 1: Argumentative Strategy\n";
             content += `Response: ${responses.question1}\n\n`;
-            content += "Question 2: Can you think of examples of coloniality that are not necessarily between Africa and the Global North?\n";
+            content += "Question 2: Author's Stance\n";
             content += `Response: ${responses.question2}\n\n`;
-            content += "Question 3: What is the difference between migration and decoloniality?\n";
+            content += "Question 3: Evidence and Examples\n";
             content += `Response: ${responses.question3}\n\n`;
-            content += "Question 4: What is the relationship between decoloniality and interpreting one of your discipline's assignments?\n";
-            content += `Response: ${responses.question4}\n\n`;
             content += "This document was generated from the Academic Literacy assignment tool.";
             return content;
         }
@@ -441,12 +471,12 @@
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
             const dateStr = new Date().toISOString().slice(0, 10);
-            link.download = `decoloniality_reflection_${dateStr}.txt`;
+            link.download = `decoloniality_analysis_${dateStr}.txt`;
             document.body.appendChild(link);
             link.click();
             URL.revokeObjectURL(link.href);
             document.body.removeChild(link);
-            alert(`Responses downloaded as decoloniality_reflection_${dateStr}.txt!\nCheck your Downloads folder.`);
+            alert(`Responses downloaded as decoloniality_analysis_${dateStr}.txt!\nCheck your Downloads folder.`);
         }
         
         function copyResponses() {
