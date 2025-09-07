@@ -277,6 +277,46 @@
             border-color: var(--digital-purple);
             box-shadow: 0 0 10px rgba(207, 64, 255, 0.5);
         }
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .download-button {
+            background: var(--digital-purple);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .download-button:hover {
+            background: #b020e0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .copy-button {
+            background: var(--royal-blue);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .copy-button:hover {
+            background: var(--royal-blue-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
         /* Back Button */
         .back-button-container {
             text-align: center;
@@ -310,19 +350,23 @@
             .full-width-card {
                 padding: 20px;
             }
-            .article-link-button, .back-button {
+            .article-link-button, .back-button, .action-button {
                 padding: 0.7rem 1.2rem;
                 font-size: 0.9rem;
             }
             .question-title {
                 font-size: 1rem;
             }
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
         @media (max-width: 480px) {
             .top-header h1 {
                 font-size: 1.2rem;
             }
-            .article-link-button, .back-button {
+            .article-link-button, .back-button, .action-button {
                 padding: 0.6rem 1rem;
                 font-size: 0.85rem;
             }
@@ -363,19 +407,28 @@
             <div class="question-card">
                 <h3 class="question-title"><i class="fas fa-bullseye"></i> Question 1: Argumentative Strategy</h3>
                 <p>Identify and explain one key argumentative strategy the author uses to develop his main argument about decoloniality. How does this strategy (e.g., use of definitions, examples, counterarguments) help the author persuade the reader?</p>
-                <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
+                <textarea class="textarea" id="question1" placeholder="Write your analysis here..."></textarea>
             </div>
             
             <div class="question-card">
                 <h3 class="question-title"><i class="fas fa-user-check"></i> Question 2: Author's Stance</h3>
                 <p>What is the author's overall stance on the concept of decoloniality, particularly in relation to the Stellenbosch University incident? How does he position himself in relation to more "radical" interpretations of decolonization, and what evidence does he provide to support his position?</p>
-                <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
+                <textarea class="textarea" id="question2" placeholder="Write your analysis here..."></textarea>
             </div>
             
             <div class="question-card">
                 <h3 class="question-title"><i class="fas fa-search"></i> Question 3: Evidence and Examples</h3>
                 <p>Analyze how the author uses evidence and examples (such as the Stellenbosch incident, references to Fanon, or comparisons to Zimbabwe) to support his claims about what decolonization in African education should entail. Which pieces of evidence are most effective and why?</p>
-                <textarea class="textarea" placeholder="Write your analysis here..."></textarea>
+                <textarea class="textarea" id="question3" placeholder="Write your analysis here..."></textarea>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-button download-button" onclick="downloadResponses()">
+                    <i class="fas fa-download"></i> Download Responses (.txt)
+                </button>
+                <button class="action-button copy-button" onclick="copyResponses()">
+                    <i class="fas fa-copy"></i> Copy to Clipboard
+                </button>
             </div>
             
             <div class="back-button-container">
@@ -385,5 +438,56 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        function collectResponses() {
+            const responses = {
+                question1: document.getElementById('question1').value || "(No response)",
+                question2: document.getElementById('question2').value || "(No response)",
+                question3: document.getElementById('question3').value || "(No response)"
+            };
+            return responses;
+        }
+        
+        function formatTextContent() {
+            const responses = collectResponses();
+            const date = new Date().toLocaleDateString();
+            let content = "Critical Analysis: Decolonising Education in Africa\n";
+            content += "===============================================\n\n";
+            content += `Date: ${date}\n\n`;
+            content += "Question 1: Argumentative Strategy\n";
+            content += `Response: ${responses.question1}\n\n`;
+            content += "Question 2: Author's Stance\n";
+            content += `Response: ${responses.question2}\n\n`;
+            content += "Question 3: Evidence and Examples\n";
+            content += `Response: ${responses.question3}\n\n`;
+            content += "This document was generated from the Academic Literacy assignment tool.";
+            return content;
+        }
+        
+        function downloadResponses() {
+            const content = formatTextContent();
+            const blob = new Blob([content], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            const dateStr = new Date().toISOString().slice(0, 10);
+            link.download = `decoloniality_analysis_${dateStr}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            URL.revokeObjectURL(link.href);
+            document.body.removeChild(link);
+            alert(`Responses downloaded as decoloniality_analysis_${dateStr}.txt!\nCheck your Downloads folder.`);
+        }
+        
+        function copyResponses() {
+            const content = formatTextContent();
+            navigator.clipboard.writeText(content).then(() => {
+                alert("Responses copied to clipboard!");
+            }).catch(err => {
+                console.error('Copy failed:', err);
+                alert("Copy failed. Please try again.");
+            });
+        }
+    </script>
 </body>
 </html>
